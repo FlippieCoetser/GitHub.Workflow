@@ -6,9 +6,12 @@ To interact with GitHub and follow along you will need to install [git](https://
 Depending on your role within the team you will use one of the following workflows:
 
 1. Product Management workflow
-   Used by Product Owners and Business Analysts to sign off user stories.
+
+Used by Product Owners and Business Analysts to sign off user stories.
+
 2. Development workflow
-   Used by Developers to implement user stories.
+
+Used by Developers to implement user stories.
 
 Before diving into the details or the workflows, let first look at the basic git commands applicable to both workflows.
 
