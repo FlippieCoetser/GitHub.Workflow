@@ -1,9 +1,9 @@
 # Code Repository and Branching Strategy
 
-This document provides a guideline for the code repository and branching strategy you should follow.
-To interact with GitHub and follow along you will need to install [git](https://git-scm.com/) on your local machine and ensure you have an account registered on [GitHub](www.github.com).
+This document provides a guideline for your code repository and branching strategy to follow.
+To interact with GitHub and follow along, you will need to install [git](https://git-scm.com/) on your local machine and ensure you have an account registered on [GitHub](www.github.com).
 
-Depending on your role within the team you will use one of the following workflows:
+Depending on your role within the team, you will use one of the following workflows:
 
 1. Product Management workflow
 
@@ -13,24 +13,24 @@ Used by Product Owners and Business Analysts to sign off user stories.
 
 Used by Developers to implement user stories.
 
-Before diving into the details or the workflows, let first look at the basic git commands applicable to both workflows.
+Before diving into the details of the workflows, let's first look at the basic git commands applicable to both workflows.
 
-> Note: We will use an example repository throughout this document. This will allow you to follow along and practice the commands
+> Note: We will use an example repository throughout this document. This will allow you to follow along and practice the commands.
 
 ## Basic Git Commands
 
 ### Cloning a Repository
 
-The first step when working with a GitHub code repository is to create a clone. Cloning a repository essentially means you create a copy of what is in GitHub on your local machine.
+The first step when working with a GitHub code repository is to create a clone. Cloning a repository means you make a copy of what is in GitHub on your local machine.
 
-To create a local clone of a GitHub repository follow these steps:
+To create a local clone of a GitHub repository, follow these steps:
 
-1. Using your browser navigate to the repository: `https://github.com/{Username}/{RepositoryName}`.
+1. Using your browser, navigate to the repository: `https://github.com/{Username}/{RepositoryName}`.
    Notice the URL pattern: you will need the `username` of the owner of the repository and the `repository name`.
 
 ![Enterprise Application Hierarchy](/Design%20Assets/GitHub.Repository.png)
 
-2. Verify that the correct repository is loaded and use the `< > Code` button to copy the repository url
+2. Verify that the correct repository is loaded and use the `< > Code` button to copy the repository URL
 
 ![Enterprise Application Hierarchy](/Design%20Assets/GitHub.Code.png)
 
@@ -40,14 +40,14 @@ To create a local clone of a GitHub repository follow these steps:
 cd C:\Data\
 ```
 
-4. Clone the repository using the `git clone` command follow by pasting the `url` you copied in step 3.
+4. Clone the repository using the `git clone` command, then paste the `URL` you copied in step 3.
 
 ```bash
 git clone https://github.com/FlippieCoetser/r.template.git
 ```
 
-5. After successfully cloning the repository a new directory will be created.
-   Change directory into the newly created directory and list the contents of the directory.
+5. a new directory will be created after successfully cloning the repository.
+   Change the directory into the newly created directory and list the contents in the directory.
 
 ```bash
 cd r.template
@@ -58,7 +58,7 @@ dir
 
 ![Enterprise Application Hierarchy](/Design%20Assets/GitHub.Clone.png)
 
-if the content do not match, follow the update local repository section below.
+If the content does not match, follow the update local repository section below.
 
 ### Update local repository
 
@@ -76,11 +76,11 @@ git pull
 
 ### Create a new branch
 
-When agile requirements are used, it is common for the issue in GitHub to reference a user story.
-Essentially the user story defines a new feature or a bug fix which the Product Owner wanted implemented.
+When agile requirements are used, it is typical for the issue in GitHub to reference a user story.
+Essentially, the user story defines a new feature or bug fix the Product Owner wants implemented.
 
 The development team typically discuss the user story with the Product Owner to align expectations and scope.
-The team may also break down the user story into smaller tasks which are then assigned to different developers.
+The team may also break down the user story into smaller tasks assigned to different developers.
 
 > Example:  
 > As a `user`,  
@@ -88,7 +88,7 @@ The team may also break down the user story into smaller tasks which are then as
 > I want to `see` a list of `todos`,  
 > So that I can prioritize my work.
 
-The example above may seem simple, but in reality touch many parts of the application. For example an User Interface needs to be designed or a database needs to be created.
+The example above may seem simple, but in reality, it touch many parts of the application. For example, an User Interface needs to be designed, or a database needs to be created.
 
 Typically the smaller tasks will fall under one of the below categories:
 
@@ -97,11 +97,11 @@ INFRA, PROVISION, RELEASE, DATA, BROKERS, FOUNDATIONS, VIEWS, PROCESSING, ORCHES
 The next step is for the developer to create a new branch for the assigned task.
 For example, assume a developer is assigned to design a new database table to support the storage of todos.
 
-The categorization of the task is `DATA` and the business entity is `todo` and the action is `retrieve`.
+The task categorisation is `DATA`, the business entity is `todo`, and the action is `retrieve`.
 
-A new local branch can be created using this above information as follows: `users/{GitHubUsername}/{Type}-{Entity}-{Action}`.
+A new local branch can be created using the above information as follows: `users/{GitHubUsername}/{Type}-{Entity}-{Action}`.
 
-based on the above example the branch name will be: `users/FlippieCoetser/Data-Todo-Retrieve`.
+Based on the above example, the branch name will be: `users/FlippieCoetser/Data-Todo-Retrieve`.
 
 1. Create a new branch
 
@@ -109,11 +109,11 @@ based on the above example the branch name will be: `users/FlippieCoetser/Data-T
 git checkout -b users/FlippieCoetser/Data-Todo-Retrieve
 ```
 
-> Note: It is not always possible to follow this exact naming pattern. However, it is important to ensure the branch starts with `users/{GitHubUsername}/`. The last part of the branch name should describe the work to be done. If you are unsure discuss with the team or consult the product owner.
+> Note: Following this exact naming pattern is not always possible. However, it is essential to ensure the branch starts with `users/{GitHubUsername}/`. The last part of the branch name should describe the work. If unsure, discuss it with the team or consult the product owner.
 
 2. Push the new branch to the cloud repository
 
-The command you executed in step 1 will switch to the newly created branch automatically.
+The command you executed in Step 1 will switch to the newly created branch automatically.
 Meaning any changes made to the code will be made to the new branch.
 However, the new branch only exists on your local machine.
 To make the new branch also available in the cloud repository, you need to push the new branch to the cloud repository.
@@ -128,26 +128,26 @@ git push --set-upstream origin users/FlippieCoetser/Data-Todo-Retrieve
 
 ### Commit Changes
 
-A test driven development (TDD) approach is used to ensure the code is of high quality.
+A test-driven development (TDD) approach is used to ensure the code is of high quality.
 This means that code change happens in pairs:
 
 1. A failing unit test is written
 2. The code is written to make the unit test pass
 
-It is very important that you program with intent and purpose. Commit message should reflect this. If you want to explore or experiment with an idea, create a new branch for this purpose. Once you are happy with the results and comfortable to implement your idea switch back to the branch where the implementation is needed and follow the TDD approach.
+It would be best if you program with intent and purpose. The commit message should reflect this. Could you create a new branch if you want to explore or experiment with an idea? Once you are happy with the results and comfortable implementing your idea, switch back to the branch where the implementation is needed and follow the TDD approach.
 
-The rationale for not exploring or experimenting in the branch where the implementation is needed is to ensure the Product Owner can track the progress of the user story and to ensure the main branch is not polluted with unnecessary code.
+The rationale for not exploring or experimenting in the branch where the implementation is needed is to ensure the Product Owner can track the user story's progress and ensure the main branch is not polluted with unnecessary code.
 
 The commit message should be clear and concise. It should describe the work done and the status of the work.
-It is recommended to use the following commit message structure: `{Type}: {TestCondition} -> {StatusStatus}`
+It is recommended to use the following commit message structure: `{Type}: {TestCondition} -> {StatusStatus}.`
 
-Again this might not always be possible. For example if you want to add documentation or configuration files, you will not write unit tests. In such case provide a clear commit message which describe what you have done.
+Again this might only sometimes be possible. For example, you will not write unit tests if you want to add documentation or configuration files. In such a case provide a clear commit message which describes what you have done.
 
 Below is an example of work done to implement the `Retrieve` operation in the `Todo` broker in an R code base.
 
 1. Create a new unit test which test if a `Todo` broker exists.
 
-> note: the code snippet below an example and based on R. The same principle applies to other languages.
+> Note: the code snippet below is an example and is based on R. The same principle applies to other languages.
 
 ```r
 # test-Broker.Todo.R
@@ -178,7 +178,7 @@ git push
 ```
 
 5. Options step: Check if the changes are available in the cloud repository.
-   Navigate to the cloud repository and change the branch to the newly create one and click commits link.
+   Navigate to the cloud repository and change the branch to the newly create one and click the `commits` link.
    You should see the commit message and the files changed.
 
 ![Enterprise Application Hierarchy](/Design%20Assets/GitHub.Commit.png)
@@ -208,7 +208,7 @@ git commit -m "BROKER: Todo.Broker Exist -> Pass"
 git push
 ```
 
-10. You should not see a failing test is followed by a passing test directly in the comment message.
+10. You should not see a failing test followed by a passing test directly in the comment message.
 
 ![Enterprise Application Hierarchy](/Design%20Assets/GitHub.Pass.png)
 
@@ -216,7 +216,7 @@ The above steps are repeated until the user story is completed.
 
 ### Creating a Pull Request
 
-Once the user story is completed, the Product owner will perform user acceptance testing and hopefully approve the new feature.
+Once the user story is completed, the Product Owner will perform user acceptance testing and hopefully approve the new feature.
 
 Assuming the Product Owner has signed off on the user story, the branch is ready to be merged back into the main branch.
 To do so a pull request is created in GitHub. Although the command-line interface can be used to create a pull request, the Product Owner will typically create the pull request via the GitHub web interface.
@@ -226,7 +226,7 @@ To do so a pull request is created in GitHub. Although the command-line interfac
 
 ![Enterprise Application Hierarchy](/Design%20Assets/GitHub.PullRequest.png)
 
-**Rather click New pull request** than accepting the suggestion. This will ensure you consciously select the correct branch to merge into the main branch.
+**Rather click New pull request** than accept the suggestion. This will ensure you consciously select the correct branch to merge into the main branch.
 
 2. Select the correct branch to merge into the main branch and click `Create pull request`.
 
@@ -244,9 +244,9 @@ To do so a pull request is created in GitHub. Although the command-line interfac
 ### Delete Branch
 
 Once the code has been merged into the main branch, the branch can be deleted.
-This is a two step process:
+This is a two-step process:
 
-1. Delete branch from cloud repository
+1. Delete the branch from the cloud repository
 
 ```bash
 git remote update origin --prune
@@ -262,7 +262,7 @@ git branch -d users/FlippieCoetser/Data-Todo-Retrieve
 
 ## Product Management Workflow
 
-Product Owners involved in singing off user stories will typically only use a `Git Clone`,`Git switch`, `Git Pull` commands in addition to the actions performed in the GitHub web interface.
+Product Owners involved in singing off user stories will typically only use `Git Clone`,` Git switch`, and `Git Pull` commands in addition to the actions performed in the GitHub web interface.
 
 We already covered the `Git Clone` and `Git Pull` commands in the previous section. So let's look at `Git switch`.
 After cloning the code repository, the Product Owner may want to first see the new feature before signing off on it.
